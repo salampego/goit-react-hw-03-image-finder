@@ -1,12 +1,12 @@
 import s from './SearchBar.module.css';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { BiSearchAlt } from 'react-icons/bi';
 export const SearchBar = ({ onSubmit }) => {
   return (
     <header className={s.Searchbar}>
       <form className={s.SearchForm} onSubmit={onSubmit}>
         <button type="submit" className={s['SearchForm-button']}>
           <span className={s['SearchForm-button-label']}>Search</span>
-          <AiOutlineSearch value={{ size: '30px' }} />
+          <BiSearchAlt size="25" color="#3f51b5" />
         </button>
 
         <input

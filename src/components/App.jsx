@@ -20,9 +20,7 @@ export class App extends Component {
       prevState.searchQuery !== this.state.searchQuery ||
       prevState.page !== this.state.page
     ) {
-      console.log(searchQuery);
       this.setState({ loading: true });
-      console.log(this.state.searchQuery);
       fetch(
         `https://pixabay.com/api/?key=26652166-68919f4336d4ff6c386516ecc&q=${searchQuery}&page=${page}&image_type=photo&orientation=horizontal&per_page=12`
       )
@@ -61,7 +59,7 @@ export class App extends Component {
     return (
       <div className={s.App}>
         <SearchBar onSubmit={this.onSubmit} />
-        {imageGallery && <ImageGallery imageGallery={imageGallery} />}
+        {imageGallery ? <ImageGallery imageGallery={imageGallery} /> : ''}
         {loading && <Loader />}
 
         {totalPages > page && <Button onClick={this.onLoadMore} />}

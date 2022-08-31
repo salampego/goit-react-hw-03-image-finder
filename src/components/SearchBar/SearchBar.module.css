@@ -34,7 +34,9 @@
 }
 
 .SearchForm-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 48px;
   height: 48px;
   border: 0;
@@ -78,4 +80,8 @@
 .SearchForm-input::placeholder {
   font: inherit;
   font-size: 18px;
+}
+
+.react-icons {
+  size: 30em;
 }
