@@ -1,6 +1,5 @@
 import s from './ImageGalleryItem.module.css';
 import PropTypes from 'prop-types';
-import { TailSpin } from 'react-loader-spinner';
 export const ImageGalleryItem = ({
   id,
   webformatURL,
