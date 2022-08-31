@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import s from './App.module.css';
-import * as basicLightbox from 'basiclightbox';
+
 import { SearchBar } from './SearchBar/SearchBar';
 import { Loader } from './Loader/Loader';
 import { ImageGallery } from './ImageGallery/ImageGallery';
@@ -17,25 +17,25 @@ export class App extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    const { searchQuery, page, totalHits, error } = this.state;
-
+    const { searchQuery, page, totalHits } = this.state;
     if (
       prevState.searchQuery !== this.state.searchQuery ||
       prevState.page !== this.state.page
     ) {
-      console.log('submit');
-      this.setState({ loading: true, page: 1 });
-
+      this.setState({ loading: true });
       ImagesAPI(searchQuery, page)
         .then(imageGallery => {
           if (totalHits === 0) {
             this.setState({ error: `images ${searchQuery} not found ` });
           }
-          this.setState({
+          this.setState(prevState => ({
             loading: false,
             imageGallery: [...prevState.imageGallery, ...imageGallery.hits],
             totalHits: imageGallery.totalHits,
-          });
+          }));
+        })
+        .catch(error => {
+          this.setState({ error });
         })
         .finally(() => {
           this.setState({ loading: false });
@@ -48,7 +48,6 @@ export class App extends Component {
   onSubmit = e => {
     e.preventDefault();
     const value = e.target.elements.searchBar.value;
-    console.log('submit 2');
     this.setState({
       imageGallery: [],
       searchQuery: value,
