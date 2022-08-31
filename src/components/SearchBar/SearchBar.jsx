@@ -1,13 +1,17 @@
-export const SearchBar = () => {
+import s from './SearchBar.module.css';
+import { AiOutlineSearch } from 'react-icons/ai';
+export const SearchBar = ({ onSubmit }) => {
   return (
-    <header className="searchbar">
-      <form className="form">
-        <button type="submit" className="button">
-          <span className="button-label">Search</span>
+    <header className={s.Searchbar}>
+      <form className={s.SearchForm} onSubmit={onSubmit}>
+        <button type="submit" className={s['SearchForm-button']}>
+          <span className={s['SearchForm-button-label']}>Search</span>
+          <AiOutlineSearch value={{ size: '30px' }} />
         </button>
 
         <input
-          className="input"
+          name="searchBar"
+          className={s['SearchForm-input']}
           type="text"
           autoComplete="off"
           autoFocus
