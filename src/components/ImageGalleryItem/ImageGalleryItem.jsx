@@ -1,4 +1,6 @@
 import s from './ImageGalleryItem.module.css';
+import PropTypes from 'prop-types';
+import { TailSpin } from 'react-loader-spinner';
 export const ImageGalleryItem = ({
   id,
   webformatURL,
@@ -15,4 +17,12 @@ export const ImageGalleryItem = ({
       />
     </li>
   );
+};
+
+ImageGalleryItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  webformatURL: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+  showModal: PropTypes.func.isRequired,
 };

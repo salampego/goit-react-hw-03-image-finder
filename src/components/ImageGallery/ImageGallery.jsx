@@ -1,4 +1,6 @@
 import s from './ImageGallery.module.css';
+import PropTypes from 'prop-types';
+
 import { ImageGalleryItem } from 'components/ImageGalleryItem/ImageGalleryItem';
 import { Component } from 'react';
 import { Modal } from 'components/Modal/Modal';
@@ -26,7 +28,6 @@ export class ImageGallery extends Component {
   };
   render() {
     const imageGallery = this.props.imageGallery;
-
     const { showModal } = this.state;
     return (
       <>
@@ -55,3 +56,14 @@ export class ImageGallery extends Component {
     );
   }
 }
+
+ImageGallery.propTypes = {
+  imageGallery: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+    })
+  ),
+};
