@@ -61,7 +61,7 @@ export class App extends Component {
   };
 
   render() {
-    const { loading, imageGallery, totalHits, page, error } = this.state;
+    const { loading, imageGallery, totalHits, page } = this.state;
     const totalPages = totalHits / 12;
     return (
       <div className={s.App}>
